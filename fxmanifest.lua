@@ -29,7 +29,8 @@ files {
 dependencies {
     'rsg-core',
     'rsg-menubase',
-    'ox_lib'
+    'ox_lib',
+    'ox_target'
 }
 
 lua54 'yes'
