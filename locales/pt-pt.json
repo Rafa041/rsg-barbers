@@ -1,8 +1,8 @@
 {
   "sv_error_1": "Dinheiro Insuficiente",
-  "sv_error_2": "você não tem dinheiro suficiente!",
+  "sv_error_2": "não tens dinheiro suficiente!",
   "sv_success_1": "Novo Estilo Comprado",
-  "sv_success_2": "você comprou um novo estilo!",
+  "sv_success_2": "comprares um novo estilo!",
   "cl_open_barber": "Abrir Barbeiro",
   "cl_barber_shop": "Barbearia",
   "cl_barber": "Barbeiro",
@@ -36,4 +36,3 @@
   "cl_clarity": "Nitidez",
   "cl_stabble_opacity": "Opacidade da Barba Rala"
 }
-

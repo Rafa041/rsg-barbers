@@ -8,17 +8,18 @@ AddEventHandler('rsg-barber:server:SaveSkin', function(CreatorCache, gender)
     local citizenid = player.PlayerData.citizenid
     local PedIsMale = gender
     local price = Config.BarberCost
-    local money = player.Functions.GetMoney('cash')
+    local money = player.Functions.GetMoney('bloodmoney')
 
     if money < price then
-        TriggerClientEvent('ox_lib:notify', src, {title = locale('sv_error_1'), description = locale('sv_error_2'), type = 'error' })
+        TriggerClientEvent('ox_lib:notify', src,
+            { title = locale('sv_error_1'), description = locale('sv_error_2'), type = 'error' })
         return
     end
 
     local result = MySQL.Sync.fetchAll('SELECT skin FROM playerskins WHERE citizenid = @citizenid',
-    {
-        citizenid = citizenid
-    })
+        {
+            citizenid = citizenid
+        })
 
     if result[1] == nil then return end
 
@@ -132,13 +133,13 @@ AddEventHandler('rsg-barber:server:SaveSkin', function(CreatorCache, gender)
     end
 
     MySQL.query.await("UPDATE playerskins SET skin = @skin WHERE citizenid = @citizenid",
-    {
-        ['citizenid'] = citizenid,
-        ['skin'] = json.encode(skin)
-    })
+        {
+            ['citizenid'] = citizenid,
+            ['skin'] = json.encode(skin)
+        })
 
-    player.Functions.RemoveMoney('cash', price)
+    player.Functions.RemoveMoney('bloodmoney', price)
 
-    TriggerClientEvent('ox_lib:notify', src, {title = locale('sv_success_1'), description = locale('sv_success_2'), type = 'success' })
-
+    TriggerClientEvent('ox_lib:notify', src,
+        { title = locale('sv_success_1'), description = locale('sv_success_2'), type = 'success' })
 end)
